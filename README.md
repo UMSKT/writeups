@@ -177,6 +177,8 @@ And finally, we compute the value $D_E = t_1 + p(t_2 - 1)$.
 
 ## Feistel Cipher
 
+`Note: the following information applies to MS Plus! DME, Office XP, and Windows. Office 03 and 07 use a much more complex encoding scheme that has not been fully reverse engineered as of writing.`
+
 The last step is to decrypt the data in $D_E$ using a key derived from the installation ID.
 
 The installation ID is first validated and has its checksum digits removed to form an integer, just like with the confirmation ID. Then, it is converted to a little endian byte representation and decrypted using a 4-byte key.
