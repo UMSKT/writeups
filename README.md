@@ -169,7 +169,7 @@ $\quad\text{Let } D = (w,z) + (w^p, z^p) \text{ stored as Mumford representation
 
 Next, the divisor $D_2$ is calculated as $D_2 = \left[65537\right]D$.
 
-Expressing $D_2$ as $\left\langle x^2 + u_1x + u_0, v_1x + v_0 \right\rangle$, we compute the values $t_1$ and $t_2$ as follows:
+Expressing $D_2$ as $\left\langle x^2 + u_1x + u_0, v_1x + v_0 \right\rangle$, we compute the values $t_1$ and $t_2$ over $\mathbb{F}_p$ as follows:
 
 $$ t_1 = \frac{u_1}{2} $$
 
