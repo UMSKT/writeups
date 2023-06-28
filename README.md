@@ -10,7 +10,7 @@ If you are not interested in the mathematics, please skip to [Validation Mechani
 
 ## Hyperelliptic Curves
 
-An imaginary hyperelliptic curve $E$ of genus $g$ is a set of points $(x,y)$ that satisfies the following relation:
+An imaginary hyperelliptic curve $H$ of genus $g$ is a set of points $(x,y)$ that satisfies the following relation:
 
 $$ y^2 + y \cdot h(x) \equiv F(x) \pmod {p} $$
 
@@ -62,7 +62,7 @@ The reduction algorithm is as follows:
 4. Let $E=-\sum Q_i$.
 5. If the number of points in $E$ is less than or equal to $g$, then stop, the reduction of $D$ is $E$. Otherwise, let $D=E$ and repeat from step 1.
 
-Reduction by this method is analogous to the modulo operation for integers, in that it maps the group of all divisors to a cyclic group known as the *Jacobian* $J(E)$.
+Reduction by this method is analogous to the modulo operation for integers, in that it maps the group of all divisors to a cyclic group known as the *Jacobian* $J(H)$.
 
 Some useful observations can be made about the reduction procedure. Notice first that it is necessary for the polynomial $q$ to equal 0 for all $x_i$ of the points $P_i$ in the divisor $D$, as can be seen from the curve equation and the definition of $v$. Therefore, we can let $q(x)=u(x)q'(x)$, where the polynomial $u(x)=0$ has roots $x_i$ with multiplicity $c_i$ for all the points $P_i$ in $D$. 
 
@@ -107,13 +107,13 @@ $$ D_2 = \left[e\right] D $$
 
 for some known integer $e$ and a pair of known divisors $D$ and $D_2$.
 
-To compute $k$ from $e$, we need to know the *order* of the Jacobian $N=\\#J(E)$, which is the number of unique divisors in $J$.
+To compute $k$ from $e$, we need to know the *order* of the Jacobian $N=\\#J(H)$, which is the number of unique divisors in $J$.
 
 When this value is known, $k$ can be computed in a straightforward manner:
 
 $$ k = e^{-1} \pmod {N} $$
 
-Computation of $k$ and $\\#J(E)$ is a difficult process that warrants its own write-up, the automated method is discussed in [Parameter Extraction](#Parameter-Extraction). For now, we will go into the mechanism behind confirmation ID generation and validation.
+Computation of $k$ and $\\#J(H)$ is a difficult process that warrants its own write-up, the automated method is discussed in [Parameter Extraction](#Parameter-Extraction). For now, we will go into the mechanism behind confirmation ID generation and validation.
 
 # Validation Mechanism
 
