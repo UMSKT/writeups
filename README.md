@@ -72,20 +72,22 @@ Note that in many cases, $q'(x)$ will be an irreducible (non-factorable) polynom
 
 ## Mumford representation
 
-The Mumford representation of a semi-reduced divisor $D=\sum c_i(x_i,y_i)$ is the pair of polynomials $u(x)$ and $v(x)$:
+The Mumford representation of a semi-reduced divisor $D=\sum c_i(x_i,y_i)$ is the unique pair of polynomials $u(x)$ and $v(x)$ where:
 
 $$ u(x) = \prod_{i=1}^{n} (x-x_i)^{c_i} $$
 
-$$ v^2 \equiv F \pmod {u} $$
+$$ v^2 \equiv F \pmod {u}$$
+
+$$\mathrm{deg}(v) \lt \mathrm{deg}(u)$$
 
 With this, the divisor can now be re-defined as $D=\langle u(x), v(x) \rangle$.
 
-From the previous observations, it can be seen that $u$ and $v$ in this representation exactly the polynomials $u$ and $v$ from the reduction steps above. Therefore, the reduction algorithm is much more concise using the Mumford representation.
+From the previous observations, it can be seen that $u$ and $v$ in this representation are exactly the polynomials $u$ and $v$ from the reduction steps above. Therefore, the reduction algorithm is much more concise using the Mumford representation.
 
 Reduction algorithm for $D=\langle u,v \rangle$:
 1. Let $u' = \frac{F-v^2}{u}$
-2. Let $v' = -u \bmod p$
-3. If $deg(u') \leq g$, then stop. $E = \left\langle u', v' \right\rangle$ is the reduction of $D$. Otherwise, let $u=u'$ and $v=v'$ and start from step 1.
+2. Let $v' = -v \bmod u'$
+3. If $\mathrm{deg}(u') \leq g$, then stop. $E = \left\langle u', v' \right\rangle$ is the reduction of $D$. Otherwise, let $u=u'$ and $v=v'$ and start from step 1.
 
 With the Mumford representation and reduction defined, we are ready to state the central problem of hyperelliptic curve cryptography.
 
@@ -204,16 +206,16 @@ function decrypt_feistel(data, key):
 
 The decrypted IID data is either 17 or 19 bytes, with the following structure:
 
-```
+```c++
 struct DecryptedIID {
     byte hwid[8];
     // The following values correspond to the product code
     // rpc-chid-seq-last
-    uint last : 17 bits;
-    uint version : 3 bits; // 4 for XP RTM, 5 for XP SP1+
-    uint seq : 24 bits;
-    uint chid : 10 bits;
-    uint rpc : 9 bits;
+    uint last : 17;
+    uint version : 3; // 4 for XP RTM, 5 for XP SP1+
+    uint seq : 24;
+    uint chid : 10;
+    uint rpc : 9;
     ushort key_hash; // Only in SP1+, contains 12 bits of product key hash
 }
 ```
@@ -228,13 +230,13 @@ Finally, the value $D_E$ from the previous section is converted to little endian
 
 The structure of the decrypted CID data is as follows:
 
-```
+```c++
 struct DecryptedCID {
     byte key_hash[6]; // Genuine CIDs have bytes of the product key hash stored here, but they're usually not checked
     bool check_hash; // key_hash is checked only if this byte is true
     byte attempt; // When generating CIDs, this byte is incremented for each generation attempt, maximum of 0x80 times
     byte zero[6]; // Must be zeroes
-}
+};
 ```
 
 # Parameter Extraction
@@ -255,7 +257,7 @@ The parameters for confirmation ID generation are stored in `licdll.dll` (Window
 
 An example when run on Windows XP SP3's `licdll.dll` with IDA is provided below.
 
-```
+```c
 int __stdcall sub_6107FAF4(int a1)
 {
   int v1; // edi
@@ -289,12 +291,12 @@ int __stdcall sub_6107FAF4(int a1)
 
 The variable `a1` is a pointer to a `WPAHyperellipticParams` struct with the following layout:
 
-```
+```c
 // BigInts are stored as 2 DWORDs in little endian order
 struct BigInt {
     uint low;
     uint high;
-}
+};
 
 struct WPAHyperellipticParams {
     uint genus; // Genus of the curve, almost always 2
@@ -303,7 +305,7 @@ struct WPAHyperellipticParams {
     uint public_multiplier; // Value multiplied by initial divisor to verify CID
     uint modulus[modulus_size]; // Prime modulus of curve
     BigInt coefficients[6]; // Coefficients of F(x) in order of lowest to highest degree
-}
+};
 ```
 
 Then, download the private key solver from [here](https://github.com/UMSKT/XPCIDSolver). Edit solve.py to include the parameters from the DLL, run `Install.sh`, then run `solve.py`. The solver will then output the private key for the curve, which can then be used to generate confirmation IDs.
