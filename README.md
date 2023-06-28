@@ -111,7 +111,7 @@ When this value is known, $k$ can be computed in a straightforward manner:
 
 $$ k = e^{-1} \pmod {N} $$
 
-Computation of $k$ and $\\#J(E)$ is a difficult process, discussed in [Parameter Extraction](#Parameter-Extraction). For now, we will go into the mechanism behind confirmation ID generation and validation.
+Computation of $k$ and $\\#J(E)$ is a difficult process that warrants its own write-up, the automated method is discussed in [Parameter Extraction](#Parameter-Extraction). For now, we will go into the mechanism behind confirmation ID generation and validation.
 
 # Validation Mechanism
 
