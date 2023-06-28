@@ -241,7 +241,7 @@ Other software that is known to use this confirmation ID system includes Microso
 
 The parameters for confirmation ID generation are stored in `licdll.dll` (Windows), `MSO.DLL` (Office), or `MPA.DLL` (MS Plus). These DLLs are obfuscated, and therefore will need to be deobfuscated using AntiWPA Generic by the AntiWPA Team.
 
-1. Download AntiWPA Generic 2.3 from https://antiwpa.planet-dl.org/Generic%20Antiwpa-2.3-WinXP-2k3.ZiP. Username and password are `planet-dl.org`.
+1. Download [AntiWPA Generic 2.3](https://antiwpa.planet-dl.org/Generic%20Antiwpa-2.3-WinXP-2k3.ZiP). Username and password are `planet-dl.org`.
 2. Extract the DLL.
 3. Under the Options menu, uncheck "Apply OOBE Fix" and "Apply WPA Fix". 
 4. Check "Remove selfcheck blocks" and "Remove crypt blocks". The menu that comes up after "Remove selfcheck blocks" is not important, any option can be picked.
@@ -304,4 +304,4 @@ struct WPAHyperellipticParams {
 }
 ```
 
-Then, download the private key solver from https://github.com/UMSKT/XPCIDSolver. Edit solve.py to include the parameters from the DLL, run `Install.sh`, then run `solve.py`. The solver will then output the private key for the curve, which can then be used to generate confirmation IDs.
+Then, download the private key solver from [here](https://github.com/UMSKT/XPCIDSolver). Edit solve.py to include the parameters from the DLL, run `Install.sh`, then run `solve.py`. The solver will then output the private key for the curve, which can then be used to generate confirmation IDs.
