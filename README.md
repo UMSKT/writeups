@@ -44,7 +44,7 @@ $$ D = \sum_{i=1}^{n} c_{i}P_{i} $$
 
 The only operation that is defined on individual points is negation, which for a point $P = (x,y)$ is defined as $-P = (x,-y)$. 
 
-Divisors, however, can be added and multiplied by scalars according to their definition. This allows the construction of a group, but this group is too large to be cryptographically useful. Therefore, we will need to consider a subset of divisors with useful properties.
+Divisors, however, can be added and multiplied by scalars according to their definition. This allows the construction of an abelian (commutative) additive group, but this group is too large to be cryptographically useful. Therefore, we will need to consider a subset of divisors with useful properties.
 
 ## Semi-reduced and reduced divisors
 
@@ -62,7 +62,7 @@ The reduction algorithm is as follows:
 4. Let $E=-\sum Q_i$.
 5. If the number of points in $E$ is less than or equal to $g$, then stop, the reduction of $D$ is $E$. Otherwise, let $D=E$ and repeat from step 1.
 
-Reduction by this method is analogous to the modulo operation for integers, in that it maps the group of all divisors to a cyclic group known as the *Jacobian* $J(H)$.
+Reduction by this method is analogous to the modulo operation for integers, in that it maps the group of all divisors to a cyclic group known as the *Jacobian* $J(H)$. The Jacobian group has similar properties to the addition group for elliptic curve points, making it useful for cryptography. Additionally, the reduction process preserves the commutativity of addition, so the Jacobian is also abelian.
 
 Some useful observations can be made about the reduction procedure. Notice first that it is necessary for the polynomial $q$ to equal 0 for all $x_i$ of the points $P_i$ in the divisor $D$, as can be seen from the curve equation and the definition of $v$. Therefore, we can let $q(x)=u(x)q'(x)$, where the polynomial $u(x)=0$ has roots $x_i$ with multiplicity $c_i$ for all the points $P_i$ in $D$. 
 
@@ -133,7 +133,7 @@ Once the checksums are validated for each digit group, the checksum digits are r
 
 ## Hyperelliptic Decryption
 
-C is then split into two integers $x_1$ and $x_2$ like so:
+$C$ is then split into two integers $x_1$ and $x_2$ like so:
 
 $$ x_1 = \left \lfloor {\frac{C}{p+1}} \right \rfloor $$
 
@@ -169,7 +169,7 @@ $\quad\text{Let } D = (w,z) + (w^p, z^p) \text{ stored as Mumford representation
 
 Next, the divisor $D_2$ is calculated as $D_2 = \left[65537\right]D$.
 
-Expressing $D_2$ as $\left\langle x^2 + u_1x + u_0, v_1x + v_0 \right\rangle$, we compute the values $t_1$ and $t_2$ over $\mathbb{F}_p$ as follows:
+Expressing $D_2$ as $\left\langle x^2 + u_1x + u_0, v_1x + v_0 \right\rangle$, we compute the values $t_1$ and $t_2$ over $\mathbb{F}_p$ (the integers modulo $p$) as follows:
 
 $$ t_1 = \frac{u_1}{2} $$
 
