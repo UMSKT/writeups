@@ -5,7 +5,7 @@ Greetings all. This repository is where you will find our documentation on the i
 Currently, we have written documentation on the following topics:
 
 - [Windows XP Confirmation IDs](./ConfID.md)
-- [PKEY2005 (Windows Vista/7) Product Key Validation](./PIDGENX.md)
+- [PKEY2005 (Windows Vista/7) Product Key Validation](./PKEY2005.md)
 
 We do assume the reader has certain background knowledge in mathematics and programming when creating these writeups, but much of this background info is readily available on the internet.
 
