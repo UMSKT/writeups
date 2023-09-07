@@ -309,3 +309,11 @@ struct WPAHyperellipticParams {
 ```
 
 Then, download the private key solver from [here](https://github.com/UMSKT/XPCIDSolver). Edit solve.py to include the parameters from the DLL, run `Install.sh`, then run `solve.py`. The solver will then output the private key for the curve, which can then be used to generate confirmation IDs.
+
+## Credits
+
+- diamondggg, for writing and releasing the xp_activate32 source code
+- Pierrick Gaudry, for creating NTLJac2, off which our modified Confirmation ID parameter solver is based
+- david4599, for providing his modified version of NTLJac2 and assisting in Confirmation ID generation
+- CONIGUERO, Neo-Desktop, TheTank20, for assisting in finding parameters for non-Windows products
+- Microsoft :heart:
