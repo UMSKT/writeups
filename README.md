@@ -1,6 +1,13 @@
 # UMSKT Writeup Repository
 
-Greetings all. This repository is where you will find our documentation on the inner workings activation mechanisms. We do assume the reader has certain background knowledge in mathematics and programming when creating these writeups, but much of this background info is readily available on the internet.
+Greetings all. This repository is where you will find our documentation on the inner workings activation mechanisms. 
+
+Currently, we have written documentation on the following topics:
+
+- [Windows XP Confirmation IDs](./ConfID.md)
+- [PIDGENX (Windows Vista/7) Product Key Validation](./PIDGENX.md)
+
+We do assume the reader has certain background knowledge in mathematics and programming when creating these writeups, but much of this background info is readily available on the internet.
 
 Some suggested reading for those looking to use, understand, or contribute to our documentation:
 
