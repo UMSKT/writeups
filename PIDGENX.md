@@ -1,8 +1,8 @@
-# PIDGENX Validation
+# PKEY2005 Validation
 
 By WitherOrNot
 
-> NOTE: PIDGENX is an area of active research. The documentation contained here is likely to change as more information is discovered.
+> NOTE: PKEY2005 is an area of active research. The documentation contained here is likely to change as more information is discovered.
 
 ## Background
 
@@ -56,12 +56,12 @@ $$ e_m(P, S) = e_m(P, \alpha T) = e_m(\alpha P, T) = e_m(Q, T) $$
 
 ## Practical Validation
 
-While the patent provides a very comprehensive description of the signature implementation, it fails to completely describe the mechanism used in PIDGENX specifically. 
-This section is devoted to describing the specifics of PIDGENX's validation mechanism.
+While the patent provides a very comprehensive description of the signature implementation, it fails to completely describe the mechanism used in PKEY2005 specifically. 
+This section is devoted to describing the specifics of PKEY2005's validation mechanism.
 
 ### Public Key Binary Format
 
-The binary serialzed form of a PIDGENX public key is as follows, given in [ImHex Pattern Language](https://docs.werwolv.net/pattern-language/).
+The binary serialzed form of a PKEY2005 public key is as follows, given in [ImHex Pattern Language](https://docs.werwolv.net/pattern-language/).
 
 ```
 u8 size_bignum @ 0x15;
@@ -132,9 +132,9 @@ In total, the public key describes the following:
 - $\vec{Q}'$, a collection of points over $E/K_3$
 - $c$, the value of $e_m(P, S)$
 
-From this, it can already be seen that the implementation of PIDGENX's signature scheme is different from the patent.
+From this, it can already be seen that the implementation of PKEY2005's signature scheme is different from the patent.
 
-### PIDGENX Verification
+### PKEY2005 Verification
 
 The first major departure from the patent is that $M$, the message, is never actually directly provided in practice. 
 $M$ normally contains some digits of the product ID associated with a product key, as well as presumed authentication and upgrade bits, but the value of $M$ is never exposed to the user.
@@ -197,7 +197,7 @@ Finally, the reference pairing value of $c = e_m(P, S)$ is stored in the public 
 Although much of the information involved in generating a signature is not provided in public keys, 
 it turns out that all of the information necessary to generate signatures is theoretically recoverable.
 
-The main property of PIDGENX public keys that makes key generation theoretically possible is that the pairing value $c$ is constant.
+The main property of PKEY2005 public keys that makes key generation theoretically possible is that the pairing value $c$ is constant.
 Since $P$ is a constant, and the value of $c$ depends on both $P$ and $S$, $S$ must also be effectively constant.
 
 This allows generation of product keys without needing to know the implementation of $H_2$, assuming that $\vec{\alpha}$ is known and one valid, decoded product key is available per public key.
