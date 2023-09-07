@@ -2,6 +2,8 @@
 
 By WitherOrNot
 
+> NOTE: PIDGENX is an area of active research. The documentation contained here is likely to change as more information is discovered.
+
 ## Background
 
 This writeup assumes that you have already read the [patent for this signature scheme](https://patentimages.storage.googleapis.com/a3/27/c1/3c0948a078cb28/US7587605.pdf).
