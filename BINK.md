@@ -45,7 +45,7 @@ The `BBB` and `CCCCCC` sections essentially encode the Raw Product Key. For exam
 The check digit `S` is picked so that the sum of all `C` digits with it added makes a number divisible by 7.
 
 The public key index `DD` lets us know which public key was used to successfully verify the authenticity of our Product Key.
-For example, it's `22` for Professional keys and `23` for VLK keys.
+For example, it's `22` for Professional keys and `23` for VLK keys. This value is equal to half of the BINK ID (discussed below).
 
 A random number `EEE` is used to generate a different Installation ID each time.
 
