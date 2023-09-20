@@ -4,6 +4,7 @@ Greetings all. This repository is where you will find our documentation on the i
 
 Currently, we have written documentation on the following topics:
 
+- [BINK1998 (Windows 98-XP) and BINK2002 (Server 2003/XP x64/Longhorn Pre-Reset) Product Key Validation](./BINK.md)
 - [Windows XP Confirmation IDs](./ConfID.md)
 - [PKEY2005 (Windows Vista/7) Product Key Validation](./PKEY2005.md)
 
