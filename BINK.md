@@ -15,8 +15,6 @@ It's called ECDLP (Elliptic Curve Discrete Logarithm Problem) Solver by Mr. HAAN
 
 The ReadMe file that comes with the version **0.2a** of the solver is good enough by itself, so anyone with a brain will be able to set that tool up. However, it's not open-source, so integrating it into my keygen is proven impossible.
 
-<details open>
-
 In the ideal scenario, the keygen would ask you for a BINK-resource extracted from `pidgen.dll`, which it would then unpack into the following segments:
 * Public key (`pubX`; `pubY`)
 * Generator (`genX`; `genY`)
@@ -33,7 +31,6 @@ To give you a better perspective, I can provide you with the flow of the ideal k
 * ~~Windows XP key generation~~
 * ~~Windows XP key validation~~
 * ~~Windows Server 2003 key generation~~
-</details>
 
 # Principle of operation
 We need to use a random Raw Product Key as a base to generate a Product ID in a form of `AAAAA-BBB-CCCCCCS-DDEEE`.
