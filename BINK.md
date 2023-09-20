@@ -279,10 +279,12 @@ Afterwards, the value $a$, along with some other information, can be sent to the
 2. Compute the random point $R = cG$
 3. Let `digest2 = SHA1(79 || m || R.x || R.y)`
 4. Let $h$ be integer formed by the lower 31 bits of `digest2`
-5. Let $s = \frac{-ek + \sqrt{\left(ek\right)^2 + 4c}}{2} \pmod {n}$
-6. Compute $a$ by unknown algorithm
-7. Pack $s$, $h$, and $m$, and $a$ into a 114-bit integer
-8. Convert this integer into a product key, using base-24 conversion
+5. Compute `digest1 = SHA1(5D || m || h || a || 00 00)`
+6. Let $e$ be the integer formed by the lower 62 bits of `digest1`
+7. Let $s = \frac{-ek + \sqrt{\left(ek\right)^2 + 4c}}{2} \pmod {n}$
+8. Compute $a$ by unknown algorithm
+9. Pack $s$, $h$, and $m$, and $a$ into a 114-bit integer
+10. Convert this integer into a product key, using base-24 conversion
 
 #### Mathematical mechanism
 
