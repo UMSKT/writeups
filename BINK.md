@@ -1,4 +1,4 @@
-# Windows XP/Server 2003 Keys
+# BINK1998 and BINK2002
 
 By Endermanch and WitherOrNot
 
