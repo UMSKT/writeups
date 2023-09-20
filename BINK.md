@@ -23,15 +23,6 @@ In the ideal scenario, the keygen would ask you for a BINK-resource extracted fr
 
 Knowing these segments, the keygen would bruteforce the geneator order `genOrder` using Schoof's algorithm followed by the private key `privateKey`, leveraging the calculated `genOrder` to use the most optimal Pollard's Rho algorithm. There's no doubt we can crack any private key in a matter of 20 minutes using modern computational power, provided we have the working algorithm.
 
-Once the keygen finishes bruteforcing the correct private key, the task boils down to actually generating a key, **which this keygen does**.
-To give you a better perspective, I can provide you with the flow of the ideal keygen. Crossed out is what my keygen implements:
-* ~~BINK resource extraction~~
-* Bruteforce Elliptic Curve discrete logarithm solution (`genOrder`, `privateKey`)
-* ~~Product Key processing mechanism~~
-* ~~Windows XP key generation~~
-* ~~Windows XP key validation~~
-* ~~Windows Server 2003 key generation~~
-
 # Principle of operation
 We need to use a random Raw Product Key as a base to generate a Product ID in a form of `AAAAA-BBB-CCCCCCS-DDEEE`.
 
