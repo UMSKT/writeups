@@ -210,8 +210,6 @@ typedef struct _BINKEY {
 } BINKEY;
 ```
 
-In case you want to explore further, the source code of `pidgen.dll` and all its functions is available within this repository, in the "pidgen" folder.
-
 ## Validating / generating product keys
 
 Please note throughout this section that whenever integers are converted to bytes or vice-versa, they are in [little-endian](https://en.wikipedia.org/wiki/Endianness#Little) byte order.
