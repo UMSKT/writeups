@@ -2,31 +2,9 @@
 
 By Endermanch and WitherOrNot
 
-## *The Problem*
-**In general, the only thing that separates us from generating valid Windows XP keys for EVERY EDITION and EVERY BUILD is the lack of respective private keys generated from their public counterparts inside `pidgen.dll`**. There's no code for the elliptic curve discrete logarithm function widely available online, there's only vague information on how to do it.
-
-As time went on, the problem has been _partially_ solved.
-
-The BINK resource was not encoded in any way and the data was just sequentially written to the resource. **sk00ter** also fully explained the BINK format on the MDL forums.
-Utilizing prior community knowledge on the subject, I wrote a BINK Reader in Python 3. The file is public in this repository, [click here](https://github.com/Endermanch/XPKeygen/blob/main/BINKReader.py) to view the source code.
-
-The discrete logarithm solution is the most unexplored area of research as of **May 28th, 2023**. However, my friend **nephacks** did find that elusive tool to solve that difficult problem in the darkest corners of the internet.
-It's called ECDLP (Elliptic Curve Discrete Logarithm Problem) Solver by Mr. HAANDI. Since it was extremely frustrating to find online, I did reupload it on my website. You can download the tool [here](https://dl.malwarewatch.org/software/advanced/ecc-research-tools/).
-
-The ReadMe file that comes with the version **0.2a** of the solver is good enough by itself, so anyone with a brain will be able to set that tool up. However, it's not open-source, so integrating it into my keygen is proven impossible.
-
-In the ideal scenario, the keygen would ask you for a BINK-resource extracted from `pidgen.dll`, which it would then unpack into the following segments:
-* Public key (`pubX`; `pubY`)
-* Generator (`genX`; `genY`)
-* Base point (`a`; `b`)
-* Point count `p`
-
-Knowing these segments, the keygen would bruteforce the geneator order `genOrder` using Schoof's algorithm followed by the private key `privateKey`, leveraging the calculated `genOrder` to use the most optimal Pollard's Rho algorithm. There's no doubt we can crack any private key in a matter of 20 minutes using modern computational power, provided we have the working algorithm.
-
-# Principle of operation
-We need to use a random Raw Product Key as a base to generate a Product ID in a form of `AAAAA-BBB-CCCCCCS-DDEEE`.
-
 ## Product ID
+
+We need to use a random Raw Product Key as a base to generate a Product ID in a form of `AAAAA-BBB-CCCCCCS-DDEEE`.
 
 | Digits | Meaning               |
 |-------:|:----------------------|
