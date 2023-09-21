@@ -92,7 +92,7 @@ In real world situations developers typically use curves of 256-bits or more.
 
 An important concept is that addition can be defined between two points on an elliptic curve. This also allows a definition of integer multiplication ($nP$ is $P$ added to itself $n$ times).
 
-The core of elliptic curve cryptography uses this multiplication definition, as solving the equation $Q=nP$ for known points $P$ and $Q$ is difficult with known algorithms, providing cryptographic security.
+The core of elliptic curve cryptography uses this multiplication definition, as solving the equation $Q=nP$ for known points $P$ and $Q$ is difficult with known algorithms, but it is easy to compute knowing $n$ and $Q$. This allows elliptic curve multiplication to act as a trapdoor function.
 
 ## BINK resource
 
