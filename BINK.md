@@ -213,7 +213,7 @@ The constant $n$, not included in the BINK, is the order of the point $G$.
 3. Compute the elliptic curve point $R = hK + sG$
 4. Compute `digest = SHA1(m || R.x || R.y)`, where `||` represents byte concatenation
 5. Convert `digest` to an integer
-6. Let $h_t$ be the upper 28 bits of `digest`
+6. Let $h_t$ be the lower 28 bits of `digest`
 7. Compare $h$ and $h_t$, if they are equal, the product key is valid
 
 #### Generation
