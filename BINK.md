@@ -249,7 +249,11 @@ The values $h$ and $s$ are dependent on the value of $R$ and $m$, so they can on
 
 Afterwards, the value $a$, along with some other information, can be sent to the activation server for further validation.
 
-Unlike in BINK1998, the sequence number is not directly encoded in the product key. Instead, it is obtained from the 20 bits of `digest2` above the 31 bits used for $h_t$.
+Unlike in BINK1998, the sequence number is not directly encoded in the product key. Instead, it is obtained from `digest2` like so:
+
+Treating `digest2` as an array of DWORDs in little endian order, `sequence = ((digest2[1] >> 13) << 1) | (digest2[0] >> 31)`.
+
+This sequence number encoding allows for values above 999999, so care should be taken to avoid these values, as they can affect the resulting Channel ID when being decoded.
 
 #### Generation
 
