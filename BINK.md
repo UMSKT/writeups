@@ -325,11 +325,13 @@ FactorCount:=1;
 
 ## DPCDLL and Channel IDs
 
+### Channel ID Table
+
 In Windows versions before XP, the channel ID is rarely validated except in certain products, such as Windows 98 SE Select Edition. 
 In Windows XP and Server 2003, however, the channel ID is validated to determine the license type for a specific copy. 
 This validation is done by DPCDLL.DLL, which contains a table of signed channel ID ranges and their associated license type. 
 
-For all NT 5 Windows versions except Server 2003 R2, this table has the following structure for each row:
+For all NT 5 Windows versions, this table has the following structure for each row:
 
 | Offset   | Value                             |
 |----------|-----------------------------------|
@@ -342,6 +344,8 @@ For all NT 5 Windows versions except Server 2003 R2, this table has the followin
 | `0x0018` | Evaluation Period (in days)       |
 | `0x001C` | Signature Length                  |
 | `0x0020` | Signature                         |
+
+In versions with the updated PIDGEN table (see below), this table was moved from DPCDLL.DLL to LICDLL.DLL.
 
 The license types are as follows:
 
@@ -360,6 +364,8 @@ The license types are as follows:
 
 For the Evaluation Period and Activation Grace Period values, the value `2147483647` is used to indicate `N/A`.
 
+### WPA Brick and Updated PIDGEN Table
+
 When a key with an invalid channel ID and correct BINK is supplied during setup, the setup installed will accept the key since it has a valid signature. 
 However, when attempting to login to the system, the system will prevent login until the system is activated.
 When attempting to activate, a non-functional OOBE Activation popup will appear, blocking login and effectively bricking the system, as shown below. 
@@ -368,7 +374,7 @@ When attempting to activate, a non-functional OOBE Activation popup will appear,
 
 This strange behavior is most likely a bug triggered by a lack of error handling in DPCDLL's channel ID validation code.
 
-Possibly as a result of this behavior, Microsoft added a secondary check to PIDGEN.DLL in Server 2003 RTM, making sure that keys used during setup match a more limited range of product IDs. In early versions, this check simply searches a list of product IDs, but by Server 2003 SP1, a standardized table format was created. This table is also included in Windows XP K/KN and Windows XP Professional x64.
+Possibly as a result of this behavior, Microsoft added a secondary check to PIDGEN.DLL in Server 2003 RTM, making sure that keys used during setup match a more limited range of product IDs. In early versions, this check simply searches a list of product IDs, but for Server 2003 SP1 and newer, a standardized table format was created. This table is also included in Windows XP K/KN and Windows XP Professional x64.
 
 | Offset   | Value                                                |
 |----------|------------------------------------------------------|
