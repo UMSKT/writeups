@@ -253,7 +253,7 @@ Unlike in BINK1998, the sequence number is not directly encoded in the product k
 
 Treating `digest2` as an array of DWORDs in little endian order, `sequence = ((digest2[1] >> 13) << 1) | (digest2[0] >> 31)`.
 
-This sequence number encoding allows for values above 999999, so care should be taken to avoid these values, as they can affect the resulting Channel ID when being decoded.
+This sequence number encoding allows for values above 999999, so care should be taken to avoid these values when generating keys, as they can affect the resulting Channel ID when being decoded.
 
 #### Generation
 
