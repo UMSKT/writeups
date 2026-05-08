@@ -343,14 +343,18 @@ For all NT 5 Windows versions except Server 2003 R2, this table has the followin
 
 The license types are as follows:
 
-| Type | Meaning                                          |
-|------|--------------------------------------------------|
-| 1    | Volume (VLK)                                     |
-| 2    | Retail/OEM Certificate of Authenticity (OEM-COA) |
-| 3    | Evaluation                                       |
-| 4    | Tablet                                           |
-| 5    | OEM System Locked Pre-Installation (OEM-SLP)     |
-| 6    | Embedded                                         |
+| Type | Meaning                                                       |
+|------|---------------------------------------------------------------|
+| 1    | Volume (VLK)                                                  |
+| 2    | Retail/OEM Certificate of Authenticity (OEM-COA) <sup>1</sup> |
+| 3    | Evaluation                                                    |
+| 4    | MSDN<sup>2</sup>                                              |
+| 5    | OEM System Locked Pre-Installation (OEM-SLP)                  |
+| 6    | Embedded                                                      |
+
+<sup>1</sup> For even-numbered BINKs, this ID corresponds to retail. For odd-numbered BINKs, this ID corresponds to OEM-COA.
+
+<sup>2</sup> Not 100% confirmed, but seems most likely due to all keys of this type having a 60-day activation grace period, which is consistent with [MS documentation](https://learn.microsoft.com/en-us/previous-versions/windows/it-pro/windows-xp/bb457096(v=technet.10)).
 
 For the Evaluation Period and Activation Grace Period values, the value `2147483647` is used to indicate `N/A`.
 
@@ -361,6 +365,17 @@ When attempting to activate, a non-functional OOBE Activation popup will appear,
 ![Bricked Windows](https://github.com/UMSKT/writeups/assets/26913821/28844c59-9bf1-437e-a2ef-e01710db6ab9)
 
 This strange behavior is most likely a bug triggered by a lack of error handling in DPCDLL's channel ID validation code.
+
+Possibly as a result of this behavior, Microsoft added a secondary check to PIDGEN.DLL in Server 2003 RTM, making sure that keys used during setup match a more limited range of product IDs. In early versions, this check simply searches a list of product IDs, but by Server 2003 SP1, a standardized table format was created. This table is also included in Windows XP K/KN and Windows XP Professional x64.
+
+| Offset   | Value                                                |
+|----------|------------------------------------------------------|
+| `0x0000` | Blocked flag                                         |
+| `0x0001` | Padding                                              |
+| `0x0002` | BINK ID                                              |
+| `0x0004` | Minimum Product ID (Channel ID + 1000000 * Sequence) |
+| `0x0008` | Maximum Product ID                                   |
+| `0x000C` | Unknown, probably flags of some kind                 |
 
 ## Literature
 I will add more decent reads into the bibliography in later releases.
