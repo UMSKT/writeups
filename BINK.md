@@ -356,7 +356,7 @@ The license types are as follows:
 
 <sup>1</sup> For even-numbered BINKs, this ID corresponds to retail. For odd-numbered BINKs, this ID corresponds to OEM-COA.
 
-<sup>2</sup> Not 100% confirmed, but seems most likely due to all keys of this type using retail (even-numbered) BINKs having a 60-day activation grace period, which is consistent with [MS documentation](https://learn.microsoft.com/en-us/previous-versions/windows/it-pro/windows-xp/bb457096(v=technet.10)).
+<sup>2</sup> Not 100% confirmed, but seems most likely due to all keys of this type using retail (even-numbered) BINKs and having a 60-day activation grace period, which is consistent with [MS documentation](https://learn.microsoft.com/en-us/previous-versions/windows/it-pro/windows-xp/bb457096(v=technet.10)).
 
 For the Evaluation Period and Activation Grace Period values, the value `2147483647` is used to indicate `N/A`.
 
