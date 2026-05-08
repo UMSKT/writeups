@@ -249,6 +249,8 @@ The values $h$ and $s$ are dependent on the value of $R$ and $m$, so they can on
 
 Afterwards, the value $a$, along with some other information, can be sent to the activation server for further validation.
 
+Unlike in BINK1998, the sequence number is not directly encoded in the product key. Instead, it is obtained from the 20 bits of `digest2` above the 31 bits used for $h_t$.
+
 #### Generation
 
 1. Compute a random number $c$
