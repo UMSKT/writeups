@@ -97,7 +97,7 @@ The core of elliptic curve cryptography uses this multiplication definition, as 
 ## BINK resource
 
 Since it is a public-key cryptographic system, Microsoft had to share the public key with their Windows XP release to check entered product keys against.
-It is stored within `pidgen.dll` in a form of a BINK resource. The first set of BINK data is there to validate retail keys, the second is for the
+It is stored within `pidgen.dll` in a form of a BINK (binary key) resource. The first set of BINK data is there to validate retail keys, the second is for the
 OEM keys respectively.
 
 **The structure of the BINK resource for Windows 98 and Windows XP is as follows:**
