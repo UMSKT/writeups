@@ -179,7 +179,7 @@ And finally, we compute the value $D_E = t_1 + p(t_2 - 1)$.
 
 ## Feistel Cipher
 
-`Note: the following information applies to MS Plus! DME, Office XP, and Windows. Office 03 and 07 use a much more complex encoding scheme that has not been fully reverse engineered as of writing.`
+> Note: The following information applies to Microsoft Plus! Digital Media Edition, Office XP, and Windows. Office 2003 and 2007 use a much more complex encoding scheme that is not described here, you can instead read the [SageMath implementation code](https://gist.github.com/WitherOrNot/7ac1be87811df327d4025a2c2ad5196c) by david4599.
 
 The last step is to decrypt the data in $D_E$ using a key derived from the installation ID.
 
@@ -303,8 +303,9 @@ struct WPAHyperellipticParams {
     uint modulus_size; // Size of prime modulus in DWORDs, almost always 2
     uint unknown;
     uint public_multiplier; // Value multiplied by initial divisor to verify CID
-    uint modulus[modulus_size]; // Prime modulus of curve
-    BigInt coefficients[6]; // Coefficients of F(x) in order of lowest to highest degree
+    uint _gap[2];
+    uint* modulus; // Pointer to prime modulus of curve
+    BigInt* coefficients; // Pointer to array 6 coefficients of F(x) in order of lowest to highest degree
 };
 ```
 
